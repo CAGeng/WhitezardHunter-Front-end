@@ -129,7 +129,7 @@ export default {
           // 在回调函数中执行页面跳转
           if (action === 'confirm') {
             // 使用 this.$router.push() 方法进行页面导航
-            this.$router.push('/system/detail');
+            this.$router.push('/system/chart');
           }
         }
       });

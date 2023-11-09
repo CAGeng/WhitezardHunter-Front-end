@@ -24,7 +24,7 @@
             <span>最高危漏洞排序</span>
           </div>
           <div>
-            <div v-for="pathEntry in dataflowResult" :key="dataPath">
+            <div v-for="pathEntry in dataflowResult">
               <el-card class="data-item" :body-style="{ padding: '10px' }">
                 <div v-for="entry in pathEntry" :key="entry.paramInd">
                   <div>paramInd: {{ entry.paramInd }}</div>
