@@ -13,15 +13,26 @@ export let isRelogin = { show: false };
 
 axios.defaults.headers['Content-Type'] = 'application/json;charset=utf-8'
 // 创建axios实例
-const service = axios.create({
-  // axios中请求配置有baseURL选项，表示请求URL公共部分
-  baseURL: process.env.VUE_APP_BASE_API,
-  // 超时
-  timeout: 10000
-})
+// const service = axios.create({
+//   // axios中请求配置有baseURL选项，表示请求URL公共部分
+//   baseURL: process.env.VUE_APP_BASE_API,
+//   // 超时
+//   timeout: 10000
+// })
+
+//
+axios.defaults.baseURL = process.env.VUE_APP_BASE_API
+let service = axios
 
 // request拦截器
 service.interceptors.request.use(config => {
+  if(config.xfurl) {
+    axios.defaults.baseURL = config.xfurl
+    service = axios
+  } else {
+    axios.defaults.baseURL = process.env.VUE_APP_BASE_API
+    service = axios
+  }
   // 是否需要设置 token
   const isToken = (config.headers || {}).isToken === false
   // 是否需要防止数据重复提交

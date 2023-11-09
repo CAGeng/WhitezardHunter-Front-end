@@ -8,7 +8,7 @@
       <el-col :sm="24" :lg="8" style="padding-left: 20px">
         <h2>高危漏洞</h2>
         <center><p>
-          0
+          {{test}}
         </p></center>
       </el-col>
 
@@ -36,7 +36,7 @@
           </div>
           <el-card accordion>
             <div >
-              3.8.6 - 2023-11-07
+              {{ test2 }}
             </div>
           </el-card>
           <el-card accordion>
@@ -205,18 +205,37 @@
 </template>
 
 <script>
+import {getConfig} from "@/api/system/config";
+import {indexTest} from "@/api";
+
 export default {
   name: "Index",
   data() {
     return {
       // 版本号
-      version: "3.8.6"
+      version: "3.8.6",
+      test: 0,
+      test2: 0
     };
   },
   methods: {
     goTarget(href) {
       window.open(href, "_blank");
+
+      // const a () {
+      //   getConfig().then(res-> {
+      //
+      //   })
+      // }
+    },
+    a(){
+      indexTest().then(res => {
+        console.log(res)
+      })
     }
+  },
+  mounted() {
+    this.a()
   }
 };
 </script>
