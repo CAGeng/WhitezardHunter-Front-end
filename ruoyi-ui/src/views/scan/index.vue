@@ -6,7 +6,7 @@
         <el-input
           size="medium"
           placeholder="请输入target"
-          v-model="input1"
+          v-model=input
           ></el-input>
       </el-col>
 
@@ -32,7 +32,7 @@
       </el-col>
 
       <el-col :span="1">
-        <el-button size="medium" icon="el-icon-check" circle style="margin-left: 15px;"></el-button>
+        <el-button size="medium" icon="el-icon-check" circle style="margin-left: 15px;" @click="setAnalysisPath(input, type)">RUN</el-button>
       </el-col>
 
     </el-row>
@@ -123,6 +123,7 @@ import { listMenu, getMenu, delMenu, addMenu, updateMenu } from "@/api/system/me
 import Treeselect from "@riophae/vue-treeselect";
 import "@riophae/vue-treeselect/dist/vue-treeselect.css";
 import IconSelect from "@/components/IconSelect";
+import {setAnalysisPath} from "@/api";
 
 export default {
   name: "Menu",
@@ -130,6 +131,8 @@ export default {
   components: { Treeselect, IconSelect },
   data() {
     return {
+      input: '',
+      type: '',
       tableData: [{
         category: '',
         name: '',
@@ -180,6 +183,7 @@ export default {
     this.getList();
   },
   methods: {
+    setAnalysisPath,
     // 选择图标
     selected(name) {
       this.form.icon = name;

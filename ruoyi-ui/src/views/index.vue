@@ -34,121 +34,29 @@
           <div slot="header" class="clearfix">
             <span>最多漏洞排序</span>
           </div>
-          <el-card accordion>
-            <div >
-              {{ test2 }}
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.5 - 2023-11-06
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.4 - 2023-11-05
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.3 - 2023-11-04
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.2 - 2023-11-02
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.1 - 2023-11-01
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.0 - 2023-10-31
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.9 - 2023-10-30
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.8 - 2023-10-29
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.7 - 2023-10-28
-            </div>
+          <el-card v-for="trigger in list1" :key="trigger.ossId">
+            <div>ID: {{ trigger.ossId }}</div>
+            <div>CVE ID: {{ trigger.cveId }}</div>
+            <div>Project: {{ trigger.project }}</div>
+            <div>Classes: {{ trigger.classes }}</div>
+            <div>Methods: {{ trigger.methods }}</div>
+            <div>Is Complete: {{ trigger.isComplete }}</div>
           </el-card>
         </el-card>
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
+
           <div slot="header" class="clearfix">
             <span>最高危漏洞排序</span>
           </div>
-          <el-card accordion>
-            <div >
-              <ul>
-                <li v-for="trigger in list" :key="trigger.ossId">
-                  <div>ID: {{ trigger.ossId }}</div>
-                  <div>CVE ID: {{ trigger.cveId }}</div>
-                  <div>Project: {{ trigger.project }}</div>
-                  <div>Classes: {{ trigger.classes }}</div>
-                  <div>Methods: {{ trigger.methods }}</div>
-                  <div>Is Complete: {{ trigger.isComplete }}</div>
-                </li>
-              </ul>
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.5 - 2023-11-06
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.4 - 2023-11-05
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.3 - 2023-11-04
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.2 - 2023-11-02
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.1 - 2023-11-01
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.0 - 2023-10-31
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.9 - 2023-10-30
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.8 - 2023-10-29
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.7 - 2023-10-28
-            </div>
+          <el-card v-for="trigger in list2" :key="trigger.ossId">
+            <div>ID: {{ trigger.ossId }}</div>
+            <div>CVE ID: {{ trigger.cveId }}</div>
+            <div>Project: {{ trigger.project }}</div>
+            <div>Classes: {{ trigger.classes }}</div>
+            <div>Methods: {{ trigger.methods }}</div>
+            <div>Is Complete: {{ trigger.isComplete }}</div>
           </el-card>
         </el-card>
       </el-col>
@@ -157,55 +65,13 @@
           <div slot="header" class="clearfix">
             <span>当前任务状态</span>
           </div>
-          <el-card accordion>
-            <div >
-              3.8.6 - 2023-11-07
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.5 - 2023-11-06
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.4 - 2023-11-05
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.3 - 2023-11-04
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.2 - 2023-11-02
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.1 - 2023-11-01
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.8.0 - 2023-10-31
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.9 - 2023-10-30
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.8 - 2023-10-29
-            </div>
-          </el-card>
-          <el-card accordion>
-            <div >
-              3.7.7 - 2023-10-28
-            </div>
+          <el-card v-for="trigger in list3" :key="trigger.ossId">
+            <div>ID: {{ trigger.ossId }}</div>
+            <div>CVE ID: {{ trigger.cveId }}</div>
+            <div>Project: {{ trigger.project }}</div>
+            <div>Classes: {{ trigger.classes }}</div>
+            <div>Methods: {{ trigger.methods }}</div>
+            <div>Is Complete: {{ trigger.isComplete }}</div>
           </el-card>
         </el-card>
       </el-col>
@@ -229,7 +95,10 @@ export default {
         { id: 1, name: 'Item 1' },
         { id: 2, name: 'Item 2' },
         { id: 3, name: 'Item 3' },
-      ]
+      ],
+      list1: [],
+      list2: [],
+      list3: [],
     };
   },
   methods: {
@@ -250,8 +119,13 @@ export default {
     getTriggers(){
       getTrigger().then(res => {
         // 在请求成功的回调函数中，将触发器数据赋值给 list 数组
-        console.log(res.data)
-        this.list = res.data.triggerPoint;
+        console.log("-----------")
+        console.log(res)
+        this.list = res.triggerPoint;
+        // 取前10位
+        this.list1 = this.list.slice(0, 20);
+        this.list2 = this.list.slice(20, 40);
+        this.list3 = this.list.slice(40, 60);
       }).catch(error => {
         // 处理请求失败的情况
         console.error(error);

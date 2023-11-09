@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.system.mapper.SysScanMapper">
+    
+    <resultMap type="SysScan" id="SysScanResult">
+        <result property="scanRuleId"    column="scan_rule_id"    />
+        <result property="scanRuleType"    column="scan_rule_type"    />
+        <result property="singleRuleId"    column="single_rule_id"    />
+        <result property="scanTaintType"    column="scan_taint_type"    />
+        <result property="scanNamesapce"    column="scan_namesapce"    />
+        <result property="scanClassName"    column="scan_class_name"    />
+        <result property="scanMethodName"    column="scan_method_name"    />
+        <result property="scanPara"    column="scan_para"    />
+    </resultMap>
+
+    <sql id="selectSysScanVo">
+        select scan_rule_id, scan_rule_type, single_rule_id, scan_taint_type, scan_namesapce, scan_class_name, scan_method_name, scan_para from sys_scan
+    </sql>
+
+    <select id="selectSysScanList" parameterType="SysScan" resultMap="SysScanResult">
+        <include refid="selectSysScanVo"/>
+        <where>  
+            <if test="scanRuleType != null  and scanRuleType != ''"> and scan_rule_type = #{scanRuleType}</if>
+            <if test="singleRuleId != null  and singleRuleId != ''"> and single_rule_id = #{singleRuleId}</if>
+            <if test="scanTaintType != null  and scanTaintType != ''"> and scan_taint_type = #{scanTaintType}</if>
+            <if test="scanNamesapce != null  and scanNamesapce != ''"> and scan_namesapce like concat('%', #{scanNamesapce}, '%')</if>
+            <if test="scanClassName != null  and scanClassName != ''"> and scan_class_name like concat('%', #{scanClassName}, '%')</if>
+            <if test="scanMethodName != null  and scanMethodName != ''"> and scan_method_name like concat('%', #{scanMethodName}, '%')</if>
+            <if test="scanPara != null "> and scan_para = #{scanPara}</if>
+        </where>
+    </select>
+    
+    <select id="selectSysScanByScanRuleId" parameterType="Long" resultMap="SysScanResult">
+        <include refid="selectSysScanVo"/>
+        where scan_rule_id = #{scanRuleId}
+    </select>
+        
+    <insert id="insertSysScan" parameterType="SysScan" useGeneratedKeys="true" keyProperty="scanRuleId">
+        insert into sys_scan
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="scanRuleType != null and scanRuleType != ''">scan_rule_type,</if>
+            <if test="singleRuleId != null and singleRuleId != ''">single_rule_id,</if>
+            <if test="scanTaintType != null and scanTaintType != ''">scan_taint_type,</if>
+            <if test="scanNamesapce != null and scanNamesapce != ''">scan_namesapce,</if>
+            <if test="scanClassName != null and scanClassName != ''">scan_class_name,</if>
+            <if test="scanMethodName != null and scanMethodName != ''">scan_method_name,</if>
+            <if test="scanPara != null">scan_para,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="scanRuleType != null and scanRuleType != ''">#{scanRuleType},</if>
+            <if test="singleRuleId != null and singleRuleId != ''">#{singleRuleId},</if>
+            <if test="scanTaintType != null and scanTaintType != ''">#{scanTaintType},</if>
+            <if test="scanNamesapce != null and scanNamesapce != ''">#{scanNamesapce},</if>
+            <if test="scanClassName != null and scanClassName != ''">#{scanClassName},</if>
+            <if test="scanMethodName != null and scanMethodName != ''">#{scanMethodName},</if>
+            <if test="scanPara != null">#{scanPara},</if>
+         </trim>
+    </insert>
+
+    <update id="updateSysScan" parameterType="SysScan">
+        update sys_scan
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="scanRuleType != null and scanRuleType != ''">scan_rule_type = #{scanRuleType},</if>
+            <if test="singleRuleId != null and singleRuleId != ''">single_rule_id = #{singleRuleId},</if>
+            <if test="scanTaintType != null and scanTaintType != ''">scan_taint_type = #{scanTaintType},</if>
+            <if test="scanNamesapce != null and scanNamesapce != ''">scan_namesapce = #{scanNamesapce},</if>
+            <if test="scanClassName != null and scanClassName != ''">scan_class_name = #{scanClassName},</if>
+            <if test="scanMethodName != null and scanMethodName != ''">scan_method_name = #{scanMethodName},</if>
+            <if test="scanPara != null">scan_para = #{scanPara},</if>
+        </trim>
+        where scan_rule_id = #{scanRuleId}
+    </update>
+
+    <delete id="deleteSysScanByScanRuleId" parameterType="Long">
+        delete from sys_scan where scan_rule_id = #{scanRuleId}
+    </delete>
+
+    <delete id="deleteSysScanByScanRuleIds" parameterType="String">
+        delete from sys_scan where scan_rule_id in 
+        <foreach item="scanRuleId" collection="array" open="(" separator="," close=")">
+            #{scanRuleId}
+        </foreach>
+    </delete>
+</mapper>
