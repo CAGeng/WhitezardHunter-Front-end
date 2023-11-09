@@ -42,7 +42,7 @@ export function getAnalysisRes(pathId) {
   console.log("ssss3")
   return request({
     xf_url: '/api',
-    url: '/sat/analysis/microservice' + pathId,
+    url: '/sat/analysis/result/json/' + pathId,
     method: 'get'
   })
 }
