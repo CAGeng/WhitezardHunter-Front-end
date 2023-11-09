@@ -5,25 +5,37 @@
       </el-col>
     </el-row>
     <el-row :gutter="20">
-      <el-col :sm="24" :lg="8" style="padding-left: 20px">
-        <h2>高危漏洞</h2>
-        <center><p>
-          {{test}}
-        </p></center>
+      <el-col :sm="24" :lg="8" style="padding-left: 20px; font-size: 76px; color: red; font-weight: bold;text-align: center;">
+        <h2 style="font-weight: bold; font-size: 48px; color: red;">
+          高危漏洞
+        </h2>
+        <center>
+          <p style="font-size: 36px; color: red;">
+            372
+          </p>
+        </center>
       </el-col>
 
-      <el-col :sm="24" :lg="8" style="padding-left: 20px">
-        <h2>中危漏洞</h2>
-        <center><p>
-          0
-        </p></center>
+      <el-col :sm="24" :lg="8" style="padding-left: 20px; font-size: 76px; color: coral; font-weight: bold;text-align: center;">
+        <h2 style="font-weight: bold; font-size: 48px; color: coral;">
+          中危漏洞
+        </h2>
+          <center>
+            <p style="font-size: 36px; color: coral;">
+              256
+            </p>
+          </center>
       </el-col>
 
-      <el-col :sm="24" :lg="8" style="padding-left: 20px">
-        <h2>低危漏洞</h2>
-        <center><p>
-          0
-        </p></center>
+      <el-col :sm="24" :lg="8" style="padding-left: 20px; font-size: 76px; color: orange; font-weight: bold;text-align: center;">
+        <h2 style="font-weight: bold; font-size: 48px; color: orange;">
+          中低危漏洞
+        </h2>
+        <center>
+          <p style="font-size: 36px; color: orange;">
+            204
+          </p>
+        </center>
       </el-col>
 
     </el-row>
@@ -32,7 +44,7 @@
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
           <div slot="header" class="clearfix">
-            <span>最多漏洞排序</span>
+            <span style="font-size: 24px;">最高威胁漏洞信息</span>
           </div>
           <el-card v-for="trigger in list1" :key="trigger.ossId">
             <div>ID: {{ trigger.ossId }}</div>
@@ -48,7 +60,7 @@
         <el-card class="update-log">
 
           <div slot="header" class="clearfix">
-            <span>最高危漏洞排序</span>
+            <span style="font-size: 24px;">最高利用可能漏洞信息</span>
           </div>
           <el-card v-for="trigger in list2" :key="trigger.ossId">
             <div>ID: {{ trigger.ossId }}</div>
@@ -62,9 +74,9 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
-          <div slot="header" class="clearfix">
-            <span>当前任务状态</span>
-          </div>
+          <span style="font-size: 24px;">
+            最多触发漏洞漏洞信息
+          </span>
           <el-card v-for="trigger in list3" :key="trigger.ossId">
             <div>ID: {{ trigger.ossId }}</div>
             <div>CVE ID: {{ trigger.cveId }}</div>
