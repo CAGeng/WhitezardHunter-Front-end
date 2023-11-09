@@ -74,9 +74,9 @@
       </el-col>
       <el-col :xs="24" :sm="24" :md="12" :lg="8">
         <el-card class="update-log">
-          <span style="font-size: 24px;">
-            最多触发漏洞漏洞信息
-          </span>
+          <div slot="header" class="clearfix">
+            <span style="font-size: 24px;">最多触发链路漏洞信息</span>
+          </div>
           <el-card v-for="trigger in list3" :key="trigger.ossId">
             <div>ID: {{ trigger.ossId }}</div>
             <div>CVE ID: {{ trigger.cveId }}</div>

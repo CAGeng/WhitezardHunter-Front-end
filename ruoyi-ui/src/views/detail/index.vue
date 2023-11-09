@@ -1,40 +1,90 @@
 <template>
+
   <div class="app-container home">
+    <div class="images">
+      <div class="image-container">
+        <img src="./img.png" alt="Image 1" class="image" style="max-width: 100%; max-height: 100%;" />
+      </div>
+    </div>
     <el-row :gutter="20">
       <el-col :sm="24" :lg="24">
       </el-col>
     </el-row>
     <el-divider />
     <el-row :gutter="20">
+<!--      // ？？？？ 调整下结构-->
+      <template>
+        <el-col :xs="24" :sm="24" :md="12" :lg="12">
+          <el-card class="update-log">
+            <div slot="header" class="clearfix">
+              <span>漏洞摘要</span>
+            </div>
+            <div class="vulnerability-details">
+              <div>
+                <strong>漏洞类型:</strong> SQL注入漏洞
+              </div>
+              <div>
+                <strong>漏洞数据流可达性:</strong> 是
+              </div>
+              <div>
+                <strong>漏洞利用链存在性:</strong> 是
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </template>
       <template>
         <el-col :xs="24" :sm="24" :md="12" :lg="12">
           <el-card class="update-log">
             <div slot="header" class="clearfix">
               <span>漏洞利用链</span>
             </div>
-            <div class="call-stack-list">
-              {{ callStackList }}
-            </div>
+            <ul class="call-stack-list">
+              <li v-for="(item, index) in callStackList" :key="index">{{ item }}</li>
+            </ul>
           </el-card>
         </el-col>
       </template>
       <el-col :xs="24" :sm="24" :md="12" :lg="12">
         <el-card class="update-log">
           <div slot="header" class="clearfix">
-            <span>最高危漏洞排序</span>
+            <span>漏洞数据流信息</span>
           </div>
-          <div>
-            <div v-for="pathEntry in dataflowResult">
+          <ul class="call-stack-list">
+            <li v-for="pathEntry in dataflowResult" :key="pathEntry">
               <el-card class="data-item" :body-style="{ padding: '10px' }">
-                <div v-for="entry in pathEntry" :key="entry.paramInd">
-                  <div>paramInd: {{ entry.paramInd }}</div>
-                  <div>valueStr: {{ entry.valueStr }}</div>
-                  <div>methodStr: {{ entry.methodStr }}</div>
-                  <div>typeStr: {{ entry.typeStr }}</div>
-                </div>
+                <el-list-item v-for="entry in pathEntry" :key="entry.paramInd">
+                  <el-list-item-content>
+                    <el-list-item-meta>
+                      <el-list-item-title>
+                        <div>paramInd: {{ entry.paramInd }}</div>
+                        <div>valueStr: {{ entry.valueStr }}</div>
+                        <div>methodStr: {{ entry.methodStr }}</div>
+                        <div>typeStr: {{ entry.typeStr }}</div>
+                        <hr>
+                      </el-list-item-title>
+                    </el-list-item-meta>
+                  </el-list-item-content>
+                </el-list-item>
               </el-card>
-            </div>
-          </div>
+            </li>
+          </ul>
+<!--          <el-list v-for="pathEntry in dataflowResult" :key="pathEntry">-->
+<!--            <el-card class="data-item" :body-style="{ padding: '10px' }">-->
+<!--              <el-list-item v-for="entry in pathEntry" :key="entry.paramInd">-->
+<!--                <el-list-item-content>-->
+<!--                  <el-list-item-meta>-->
+<!--                    <el-list-item-title>-->
+<!--                      <div>paramInd: {{ entry.paramInd }}</div>-->
+<!--                      <div>valueStr: {{ entry.valueStr }}</div>-->
+<!--                      <div>methodStr: {{ entry.methodStr }}</div>-->
+<!--                      <div>typeStr: {{ entry.typeStr }}</div>-->
+<!--                    </el-list-item-title>-->
+<!--                  </el-list-item-meta>-->
+<!--                </el-list-item-content>-->
+<!--              </el-list-item>-->
+<!--            </el-card>-->
+<!--          </el-list>-->
         </el-card>
       </el-col>
     </el-row>
@@ -138,7 +188,14 @@ export default {
 
 <style scoped lang="scss">
 .call-stack-list {
-  margin-top: 10px;
+  list-style: none;
+  padding: 0;
+}
+
+.call-stack-list li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 0;
+  margin-bottom: 10px;
 }
 .home {
   blockquote {

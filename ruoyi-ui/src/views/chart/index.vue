@@ -94,7 +94,7 @@ export default {
       //     });
       //   }
       // });
-      this.$alert('本轮审计发现18个高危漏洞，2个疑似漏洞', 'MicroService-SecLab', {
+      this.$alert('本轮审计发现共100个漏洞，其中主要漏洞类型包括，SQL注入类型30%，XSS注入类型10%', 'MicroService-SecLab', {
         confirmButtonText: '确定',
         callback: action => {
           this.$message({

@@ -1,5 +1,8 @@
 <template xmlns:el-col="http://www.w3.org/1999/html">
   <div class="app-container">
+    <el-button type="primary" @click="handleScan">按钮</el-button>
+    <el-input v-model="inputValue" placeholder="输入框"></el-input>
+<!--// ？？？？？？？？？？这个按钮怎么显示》？-->
     <el-row :gutter="20" class="mb8">
 
       <el-col :span="3" style="margin-right: 30px">
