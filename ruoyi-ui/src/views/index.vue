@@ -93,7 +93,16 @@
           </div>
           <el-card accordion>
             <div >
-              3.8.6 - 2023-11-07
+              <ul>
+                <li v-for="trigger in list" :key="trigger.ossId">
+                  <div>ID: {{ trigger.ossId }}</div>
+                  <div>CVE ID: {{ trigger.cveId }}</div>
+                  <div>Project: {{ trigger.project }}</div>
+                  <div>Classes: {{ trigger.classes }}</div>
+                  <div>Methods: {{ trigger.methods }}</div>
+                  <div>Is Complete: {{ trigger.isComplete }}</div>
+                </li>
+              </ul>
             </div>
           </el-card>
           <el-card accordion>
@@ -206,7 +215,7 @@
 
 <script>
 import {getConfig} from "@/api/system/config";
-import {indexTest} from "@/api";
+import {indexTest, getTrigger} from "@/api";
 
 export default {
   name: "Index",
@@ -215,7 +224,12 @@ export default {
       // 版本号
       version: "3.8.6",
       test: 0,
-      test2: 0
+      test2: 0,
+      list: [
+        { id: 1, name: 'Item 1' },
+        { id: 2, name: 'Item 2' },
+        { id: 3, name: 'Item 3' },
+      ]
     };
   },
   methods: {
@@ -232,7 +246,20 @@ export default {
       indexTest().then(res => {
         console.log(res)
       })
+    },
+    getTriggers(){
+      getTrigger().then(res => {
+        // 在请求成功的回调函数中，将触发器数据赋值给 list 数组
+        console.log(res.data)
+        this.list = res.data.triggerPoint;
+      }).catch(error => {
+        // 处理请求失败的情况
+        console.error(error);
+      });
     }
+  },
+  created() {
+    this.getTriggers();
   },
   mounted() {
     this.a()
