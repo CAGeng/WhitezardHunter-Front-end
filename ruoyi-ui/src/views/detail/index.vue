@@ -11,7 +11,7 @@
       </el-col>
     </el-row>
     <el-divider />
-    <el-row :gutter="20">
+    <el-row :gutter="20" style="margin-bottom: 20px">
       <el-col :xs="24" :sm="24" :md="12" :lg="12">
         <el-card class="update-log">
 
@@ -36,10 +36,11 @@
             <br>
             <div>
               <strong>输入结构:</strong>
-              "com.l4yn3.microserviceseclab.data.Student -> id",
-              "com.l4yn3.microserviceseclab.data.Student -> username",
-              "com.l4yn3.microserviceseclab.data.Student -> sex",
-              "com.l4yn3.microserviceseclab.data.Student -> age"
+              <p>"com.l4yn3.microserviceseclab.data.Student -> id"</p>
+              <p>"com.l4yn3.microserviceseclab.data.Student -> username"</p>
+              <p>"com.l4yn3.microserviceseclab.data.Student -> sex"</p>
+              <p>"com.l4yn3.microserviceseclab.data.Student -> age"</p>
+
             </div>
           </div>
         </el-card>
@@ -57,7 +58,7 @@
       </el-col>
     </el-row>
 
-    <el-row>
+    <el-row :gutter="20">
       <el-col :xs="24" :sm="24" :md="12" :lg="12">
         <el-card class="update-log">
           <div slot="header" class="clearfix" style="font-size: 24px; color: red;">
@@ -65,7 +66,7 @@
           </div>
           <ul class="call-stack-list">
             <li v-for="pathEntry in dataflowResult" :key="pathEntry">
-              <el-card class="data-item" :body-style="{ padding: '10px' }">
+              <div>
                 <el-list-item v-for="entry in pathEntry" :key="entry.paramInd">
                   <el-list-item-content>
                     <el-list-item-meta>
@@ -79,7 +80,7 @@
                     </el-list-item-meta>
                   </el-list-item-content>
                 </el-list-item>
-              </el-card>
+              </div>
             </li>
           </ul>
         </el-card>

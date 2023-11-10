@@ -31,10 +31,10 @@
   <div class="container">
     <div class="images">
       <div class="image-container">
-        <img src="./image1.jpg" alt="Image 1" class="image" />
+        <img src="./task1bingtu.png" alt="Image 1" class="image" />
       </div>
       <div class="image-container">
-        <img src="./image2.jpg" alt="Image 2" class="image" />
+        <img src="./totalbingtu.png" alt="Image 2" class="image" />
       </div>
     </div>
     <div class="button-container">
@@ -94,7 +94,8 @@ export default {
       //     });
       //   }
       // });
-      this.$alert('本轮审计发现共100个漏洞，其中主要漏洞类型包括，SQL注入类型30%，XSS注入类型10%', 'MicroService-SecLab', {
+      this.$alert('本轮审计发现共28个漏洞，其中主要漏洞类型包括: DoS漏洞8个（28.6%），Privacy漏洞5个（17.9%），SQL注入漏洞4个（14.3%）\n' +
+        '累计漏洞：2028个', 'MicroService-SecLab', {
         confirmButtonText: '确定',
         callback: action => {
           this.$message({
