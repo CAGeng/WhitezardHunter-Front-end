@@ -118,7 +118,7 @@ export default {
       //     });
       //   }
       // });
-      this.$alert('该项目包含18个可利用高危漏洞，2个疑似漏洞', 'MicroService-SecLab', {
+      this.$alert('该项目包含28个漏洞', 'MicroService-SecLab', {
         confirmButtonText: '确定',
         callback: action => {
           this.$message({
