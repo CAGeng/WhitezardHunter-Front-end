@@ -184,6 +184,7 @@ export default {
   },
   created() {
     this.getList();
+    console.log('sdsdsdsdsd')
   },
   methods: {
     setAnalysisPath,
