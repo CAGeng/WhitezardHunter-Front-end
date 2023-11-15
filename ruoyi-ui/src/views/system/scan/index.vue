@@ -215,8 +215,10 @@
               v-for="dict in dict.type.sys_taint_type"
               :key="dict.value"
               :label="dict.value"
-            >{{dict.label}}</el-radio>
+            >{{ dict.label }}</el-radio>
+            <el-radio label="other">其它类型</el-radio>
           </el-radio-group>
+          <el-input v-if="form.scanTaintType === 'other'" v-model="form.otherTaintType" placeholder="请输入其他类型"></el-input>
         </el-form-item>
         <el-form-item label="命名空间" prop="scanNamesapce">
           <el-input v-model="form.scanNamesapce" placeholder="请输入命名空间" />
